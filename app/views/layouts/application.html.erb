@@ -5,12 +5,85 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/5f3be3e96e.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <span>
+        <%= link_to "Bookers",root_path %>
+      </span>
+
+    <% if user_signed_in? %>
+
+      <li>
+        <%= link_to "Home", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "Users",user_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to "Books", books_path %>
+      </li>
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Home", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "About", homes_about_path %>
+      </li>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log in", user_session_path %>
+      </li>
+    <% end %>
+  </header>
     <%= yield %>
+
+    <main>
+      <h1>
+        welcome to
+          <i class="fa-solid fa-book"></i>
+          <strong>
+            Bookers
+          </strong>
+        !!
+      </h1>
+      <p>
+        IN
+        <i class="fa-solid fa-book"></i>
+        <strong>
+          Bookers,
+        </strong>
+      </p>
+      <p>
+        you can share exchange your opinions,inpressions,and emotions
+      </p>
+      <p>
+        about various books!
+      </p>
+    </main>
+
+
+
+
+
+    <footer>
+      <div class = "container mt-5">
+        <div class = "mx-aout">
+          <p>CopyRight Infratoop.inc</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
