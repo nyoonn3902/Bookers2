@@ -1,2 +1,40 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h2>User info</h2>
+
+<table>
+  <tbody>
+  <tr>
+    <th>
+      name
+    </th>
+    <th>
+      <!--yi-za-name-->
+    </th>
+  </tr>
+  <tr>
+    <th>
+      introduction
+    </th>
+    <th>
+    </th>
+  </tbody>
+  </tr>
+</table>
+
+<i class="fa-solid fa-user-gear"></i>
+
+
+
+
+
+<h2>New book</h2>
+
+<%= from_with model: Book.n do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
