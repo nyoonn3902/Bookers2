@@ -1,2 +1,26 @@
 <h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+
+<div class = "container">
+  <div class = "row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
+     
+      <form action="/books/111513" accept-charset="UTF-8" method="post">
+        <div class="form-group">
+          <%= form_with model: Book.new do |f| %> 
+          <label for="book_title">Title</label>
+            <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+          <label for="book_opinion">Opinion</label>
+          <p><%= f.text_area :body %></p>
+        </div>
+        <div class="form-group">
+          <input type="submit" name="commit" value="Update Book" class= data-disable-with="Update Book">
+          <%= link_to "Update Book",  book_path(book.id) ,class: "btn btn-success" %>
+        </div>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>

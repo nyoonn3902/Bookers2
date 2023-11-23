@@ -21,37 +21,45 @@
       </span>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-       
+
 
     <% if user_signed_in? %>
 
       <li>
+        <i class="fa-solid fa-house" style="color: #ffffff;"></i>
         <%= link_to "Home", new_user_session_path %>
       </li>
       <li>
-        <%= link_to "Users",user_path(current_user.id) %>
+        <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+        <%= link_to "Users",users_path %>
       </li>
       <li>
+        <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
         <%= link_to "Books", books_path %>
       </li>
       <li>
+        <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
+        <i class="fa-solid fa-house" style="color: #ffffff;"></i>
         <%= link_to "Home", new_user_session_path %>
       </li>
       <li>
+        <i class="fa-solid fa-link" style="color: #ffffff;"></i>
         <%= link_to "About", about_path %>
       </li>
       <li>
+        <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
         <%= link_to "Sign up", new_user_registration_path %>
       </li>
       <li>
+        <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
         <%= link_to "Log in", user_session_path %>
       </li>
     <% end %>
-    
+
         </ul>
         </div>
 
@@ -59,10 +67,10 @@
     <%= yield %>
 
     <main>
-      
+
     </main>
-   
-    
+
+
 
 
 
