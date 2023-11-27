@@ -17,8 +17,8 @@ users show
     <div class = "col-md-3">
       <%= form_with model: Book.new do |f| %>
       <h2>User info</h2>
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image, size: "100x100" %>
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, size: "100x100" %>
       <% else %>
         <%= image_tag 'no_image', size: "100x100" %>
       <% end %>
@@ -71,14 +71,18 @@ users show
         <tbody>
           <tr>
             <td>
-              <% if @user.image.attached? %>
-                <%= image_tag @user.image, size: "100x100" %>
+              <%= link_to user_path(book.user.id) do %>
+              <% if @user.profile_image.attached? %>
+                <%= image_tag @user.profile_image, size: "100x100" %>
               <% else %>
                 <%= image_tag 'no_image', size: "100x100" %>
               <% end %>
+              <% end %>
             </td>
             <td>
+              <%= link_to book_path(book.id) do %>
               <%= book.title %>
+              <% end %>
             </td>
             <td>
               <%= book.body %>

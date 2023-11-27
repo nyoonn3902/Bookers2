@@ -6,9 +6,9 @@ Books Show
 
 <div class = "container px-5 px sm-0">
   <div class = "row">
-    
-    <%= render "books",book: @book_new , user: @user %>
-   
+
+    <%= render "books",book: @book_new , user: @book.user %>
+
     <div class = "col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class = "table table-hover table-inverse">
@@ -18,8 +18,8 @@ Books Show
 
           <tr>
             <td>
-              <% if @book.user.image.attached? %>
-              <%= image_tag @book.user.image, size: "100x100" %>
+              <% if @book.user.profile_image.attached? %>
+              <%= image_tag @book.user.profile_image, size: "100x100" %>
                 <% else %>
               <%= image_tag 'no_image', size: "100x100" %>
               <p><%= link_to @book.user.name , user_path(@book.user.id) %></p>
@@ -32,7 +32,7 @@ Books Show
               <%= @book.body %>
             </td>
             <td>
-              <%= link_to "edit", edit_book_path(@book.id), class: "btn btn-sm btn-success " %>
+              <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success " %>
             </td>
             <td>
               <% if @book.user == current_user %>
@@ -40,7 +40,7 @@ Books Show
               <% end %>
             </td>
           </tr>
-         
+
         </tbody>
       </table>
     </div>

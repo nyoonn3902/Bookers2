@@ -12,6 +12,7 @@ before_action :is_matching_login_user, only:[:edit]
   end
 
   def show
+    @books = Book.all
     @user = current_user
     @book_new = Book.new
     @book = Book.find(params[:id])
@@ -19,11 +20,13 @@ before_action :is_matching_login_user, only:[:edit]
   end
 
   def create
-    book = Book.new(book_params)
-    book.user_id = current_user.id
-    if book.save
+    @books = Book.all
+    @user = current_user
+    @book_new = Book.new(book_params)
+    @book_new.user_id = current_user.id
+    if @book_new.save
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path(book.id)
+      redirect_to book_path(@book_new.id)
     else
       render :index
     end
@@ -34,11 +37,12 @@ before_action :is_matching_login_user, only:[:edit]
   end
 
   def update
-    book = Book.find(params[:id])
-     book.update(book_params)
-    if book.save
+    @user = current_user
+    @book = Book.find(params[:id])
+     @book.update(book_params)
+    if @book.save
       flash[:notice] = "You have updated book successfully."
-      redirect_to book_path(book.id)
+      redirect_to book_path(@book.id)
     else
       render :edit
     end

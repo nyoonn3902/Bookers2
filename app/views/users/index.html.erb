@@ -4,8 +4,8 @@ users index
     <div class = "col-md-3">
       <%= form_with model: Book.new do |f| %>
       <h2>User info</h2>
-       <% if @user.image.attached? %>
-        <%= image_tag @user.image, size: "100x100" %>
+       <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, size: "100x100" %>
       <% else %>
         <%= image_tag 'no_image', size: "100x100" %>
       <% end %>
@@ -59,8 +59,8 @@ users index
           <tr>
             <td></td>
             <td>
-              <% if users.image.attached? %>
-                <%= image_tag users.image, size: "100x100" %>
+              <% if users.profile_image.attached? %>
+                <%= image_tag users.profile_image, size: "100x100" %>
               <% else %>
                 <%= image_tag 'no_image', size: "100x100" %>
               <% end %>

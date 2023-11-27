@@ -1,5 +1,14 @@
 Books edit
 
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |book| %>
+      <li><%= book %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
 
 <div class = "container">
   <div class = "row">
@@ -15,8 +24,7 @@ Books edit
           <label for="book_opinion">Opinion</label>
           <p><%= f.text_area :body %></p>
         </div>
-        <div class="form-group">
-         <%= f.submit "Update" %>
+         <%= f.submit "Update Book" %>
         </div>
         <% end %>
       <%= link_to "Show", book_path(@book.id) %>
@@ -24,5 +32,5 @@ Books edit
       <%= link_to "Back", books_path %>
     </div>
   </div>
-</div>
+
 

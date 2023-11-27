@@ -1,6 +1,5 @@
 books index
 <div class = "container px-5 px sm-0">
-  <div class = "row">
 
   <% if @book_new.errors.any? %>
   <%= @book_new.errors.count %>件のエラーが発生しました
@@ -10,7 +9,7 @@ books index
     <% end %>
   </ul>
   <% end %>
-
+  <div class = "row">
      <%= render "books",book: @book_new , user: @user %>
 
     <div class = "col-md-8 offset-md-1">
@@ -28,10 +27,12 @@ books index
         <tbody>
         <tr>
           <td>
-            <% if @user.image.attached? %>
-                <%= image_tag @user.image, size: "100x100" %>
+            <%= link_to  user_path(book.user.id) do %>
+            <% if @user.profile_image.attached? %>
+                <%= image_tag @user.profile_image, size: "100x100" %>
               <% else %>
                 <%= image_tag 'no_image', size: "100x100" %>
+              <% end %>
               <% end %>
           </td>
           <td>
