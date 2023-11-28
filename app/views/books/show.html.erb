@@ -18,15 +18,19 @@ Books Show
 
           <tr>
             <td>
+              <%= link_to user_path(@book.user.id) do %>
               <% if @book.user.profile_image.attached? %>
               <%= image_tag @book.user.profile_image, size: "100x100" %>
                 <% else %>
               <%= image_tag 'no_image', size: "100x100" %>
-              <p><%= link_to @book.user.name , user_path(@book.user.id) %></p>
+             <% end %>
+             <p><%= link_to @book.user.name , user_path(@book.user.id) %></p>
              <% end %>
             </td>
             <td>
+              <%= link_to book_path(@book.id) do %>
               <%=  @book.title %>
+              <% end %>
             </td>
             <td>
               <%= @book.body %>
