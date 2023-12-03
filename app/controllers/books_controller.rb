@@ -16,7 +16,7 @@ before_action :is_matching_login_user, only:[:edit]
     @user = current_user
     @book_new = Book.new
     @book = Book.find(params[:id])
-
+    @book_comment = BookComment.new
   end
 
   def create
