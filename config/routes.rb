@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-   resources :users, only: [:show, :edit, :index, :new, :update, :create]
+   resources :users, only: [:show, :edit, :index, :new, :update, :create] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings',as: 'followings'
+    get 'followers' => 'relationships#followers',as: 'followers'
+   end
    resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :book_comments, only: [:create, :destroy]
     resource :favorite, omly: [:create, :destroy]

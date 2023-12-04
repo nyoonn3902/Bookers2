@@ -33,8 +33,29 @@ users show
           <th>introduction</th>
           <th><%= @user.introduction %></th>
         </tr>
+        <tr>
+          <th>follows</th>
+          <th>
+            <%= link_to @user.followings.count, user_followings_path(@user) %>
+            </th>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
+        </tr>
+        <tr>
+        </tr>
       </tbody>
       </table>
+      <div class="row">
+      <% if current_user != @user %>
+    <td><%= render "relationships/btn", user: @user, options: { class: ""} %></td>
+       <% else %>
+       <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% end %>
+</div>
       <div class = "row">
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
         <i class="fa-solid fa-user-gear"></i>
@@ -86,6 +107,9 @@ users show
             </td>
             <td>
               <%= book.body %>
+            </td>
+            <td>
+              コメント数: <%= book.book_comments.count %>
             </td>
           </tr>
         </tbody>
