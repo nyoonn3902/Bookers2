@@ -27,7 +27,7 @@ has_many :followers, through: :passive_relationships, source: :follower
   def following?(user)
     followings.include?(user)
   end
-  
+
   def get_profile_image(weight,height)
     unless self.profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -37,5 +37,17 @@ has_many :followers, through: :passive_relationships, source: :follower
 
   end
 
-
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
 end

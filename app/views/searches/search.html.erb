@@ -1,0 +1,58 @@
+search result
+
+<table class="table table-hover table-inverse">
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>Name</th>
+            <th>Introduction</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <%= link_to user_path(user) do %>
+            <%= image_tag user.get_profile_image(50,50) %>
+          <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(user) do %>
+            <%= user.name %>
+            <% end %>
+            </td>
+          <td><%= user.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>Title</th>
+            <th>body</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <%= link_to book_path(book) do %>
+            <%= image_tag book.user.get_profile_image(50,50) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book) do %>
+            <%= book.title %>
+            <% end %>
+            </td>
+          <td><%= book.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

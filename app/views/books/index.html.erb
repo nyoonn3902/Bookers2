@@ -9,6 +9,11 @@ books index
     <% end %>
   </ul>
   <% end %>
+
+  <div class="d-flex justify-content-center mb-2">
+          <%= render "layouts/search" %>
+        </div>
+
   <div class = "row">
      <%= render "books",book: @book_new , user: @user %>
 

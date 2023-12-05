@@ -1,4 +1,9 @@
 users index
+
+<div class="d-flex justify-content-center mb-2">
+          <%= render "layouts/search" %>
+        </div>
+
 <div class = "container px-5 px sm-0">
   <div class = "row">
     <div class = "col-md-3">
@@ -20,16 +25,12 @@ users index
           <th><%= @user.introduction %></th>
         </tr>
         <tr>
-          <th>follows</th>
-          <th>
-            <%= link_to @user.followings.count, user_followings_path(@user) %>
-            </th>
+          <th>followes</th>
+          <th><%= @user.followings.count %></th>
         </tr>
         <tr>
           <th>followers</th>
-          <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
-        </tr>
-        <tr>
+          <th><%= @user.followers.count %></th>
         </tr>
       </tbody>
       </table>
