@@ -15,11 +15,15 @@ before_action :authenticate_user!
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
-      
       @myUserId = current_user.id
     else
-      redirect_back(fallback_location: root_path)
+      redirect_to user_path(user)
     end
+  end
+  
+  private
+  def room_params
+    params.require(:room).permit(:message, :room_id )
   end
   
 end
